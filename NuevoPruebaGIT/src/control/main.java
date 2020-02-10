@@ -9,6 +9,7 @@ public class main {
 		System.out.println("Entro en la rama edu_tarea1");
 		System.out.println("Estoy rama yusi_tarea");
 		System.out.println(" estamos dentro?");
+		System.out.println("ESTE ES NUEVO DE EDUs");
 	}
 
 }
