@@ -1,6 +1,6 @@
 package control;
 
-public class main {
+public class Main{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -11,6 +11,9 @@ public class main {
 		System.out.println(" estamos dentro?");
 		System.out.println("ESTE ES NUEVO DE EDUs");
 		System.out.println("estoy en la rama otra vez ");
+
+		new Test().inicializar();
+
 	}
 
 }
