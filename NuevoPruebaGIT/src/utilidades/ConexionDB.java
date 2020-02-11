@@ -10,8 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * @author Gsancho
- * <p>Descripcion: La clase "Socio" como modelo 
+ * @author Fernando Garcia 
+ * <p>Descripcion: La clase "Conexion DB" devuelve una conecion DB al servidor local implementado en la clase.  
  * Fecha: 11/02/2020</p>
  * @params La fecha es un LocalDate, se debe importar java.time.LocalDate. Se pasa por defecto una fecha estandar por si el usuario no la proporciona.
  * 
