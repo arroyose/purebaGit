@@ -41,7 +41,5 @@ public class ImpDatos implements IDatos {
 			// TODO Auto-generated method stub
 			
 		}
-	
-	
 
 }
