@@ -1,5 +1,13 @@
 package modelos;
 
+/**
+ * @author Yuzhi
+ * <p> Esta clase define el objecto pelicula donde contiene el nombre de la pelicula, el año, la sinopsis y la categoria </p>
+ * 
+ * @version 1.0.0
+ * 
+ * 
+ */
 public class Peliculas {
 
 	private String nombre;
