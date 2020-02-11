@@ -6,12 +6,10 @@ public class Peliculas {
 	private int year;
 	private String sinopsis;
 	private CategoriaPeliculas categoria;
-	public Peliculas()
-	{
+	public Peliculas(){
 		
 	}
-	public Peliculas(String nombre,int year,String sinopsis,CategoriaPeliculas cat)
-	{
+	public Peliculas(String nombre,int year,String sinopsis,CategoriaPeliculas cat){
 		this.nombre=nombre;
 		this.year=year;
 		this.sinopsis=sinopsis;
