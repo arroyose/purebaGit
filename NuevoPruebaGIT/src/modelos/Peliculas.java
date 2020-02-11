@@ -2,7 +2,7 @@ package modelos;
 
 /**
  * @author Yuzhi
- * <p> Esta clase define el objecto peliculas donde contienen el nombre de la pelicula, el año, la sinopsis y la categoria </p>
+ * <p> Esta clase define el objecto pelicula donde contiene el nombre de la pelicula, el año, la sinopsis y la categoria </p>
  * 
  * @version 1.0.0
  * 
