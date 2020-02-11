@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 public class ConexionDB {
 	
+	
     private static Connection connection = null;
     private static String BD = "movieflix";
     private static String driverClassName = "com.mysql.cj.jdbc.Driver";
@@ -33,16 +34,6 @@ public class ConexionDB {
         }
     }
 	
-	
-	public void cargarFicheroDB() throws FileNotFoundException {
-		ConexionDB c = new ConexionDB();
-		CargarFichero fichero = new CargarFichero(new FileReader(new File("peliculas_numCat.txt")));
-		try {
-			fichero.cagarPeliculas(this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
     public Connection getConnection() {
         return connection;
