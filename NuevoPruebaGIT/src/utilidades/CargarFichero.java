@@ -1,6 +1,7 @@
 package utilidades;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,7 +22,7 @@ public class CargarFichero {
 		this.conexion = new ConexionDB();
 	}
 	
-	public void cagarPeliculas(ConexionDB conexion) throws IOException{
+	private void cagarPeliculasDB() throws IOException{
 		String linea = "";
 		int cont = 0;
 		String [] arrayString = new String[2];
@@ -30,8 +31,8 @@ public class CargarFichero {
 		
 		while((linea=bf.readLine())!=null) {
 			arrayString = linea.split(",");
-			System.out.println("Nombre: "+arrayString[0]+" Anho: "+arrayString[1]+" Categoria pelicula id: "+arrayString[2]);
-			//insertarDB(arrayString);
+			System.out.println("Nombre: "+arrayString[0]+" Anho: "+arrayString[1]+" Categoria id: "+arrayString[2]);
+			insertarDB(arrayString);
 		}
 		
 		conexion.close();
@@ -40,8 +41,6 @@ public class CargarFichero {
 	
 	private void insertarDB(String [] param) {
 		Statement ejecutar = null;
-		ResultSet resultado = null;
-		
 		try {
 			ejecutar = conexion.getConnection().createStatement();
 			ejecutar.executeUpdate("INSERT INTO movieflix.peliculas (nombre, year, sinopsis, categoria_pelicula) VALUES ("+"'"+param[0]+"'"+","+"'" +param[1]+"'"+","+"'"+ " "+"'"+"," + "'"+param[2]+"'"+")");
@@ -49,6 +48,14 @@ public class CargarFichero {
 			e.printStackTrace();
 		}
 				
+	}
+	
+	public void cargarFichero() throws FileNotFoundException {
+		try {
+			cagarPeliculasDB();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	
