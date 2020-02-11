@@ -1,7 +1,7 @@
 package servicios;
 
 
-public interface IServicios {
+public interface Iservicios {
 	
 		public void addPeliculas() throws Exception;
 		public void listarPeliculas() throws Exception;
