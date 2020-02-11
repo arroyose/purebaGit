@@ -11,7 +11,6 @@ public class ImpServicios implements IServicios {
 		datos.addPeliculas(p);
 			
 	}
-	
 	@Override
 	public void listarPeliculas() throws Exception {
 		 
