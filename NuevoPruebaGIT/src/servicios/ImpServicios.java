@@ -1,7 +1,6 @@
 package servicios;
 import datos.IDatos;
 import datos.ImpDatos;
-import modelos.Peliculas;
 public class ImpServicios implements IServicios {
 	
 	private IDatos datos=new ImpDatos();
