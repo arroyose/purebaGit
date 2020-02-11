@@ -10,7 +10,7 @@ import modelos.Socios;
 
 
 
-public class ImpServicios implements otronombre {
+public class ImpServicios implements IServicios {
 	
 	private IDatos datos=new ImpDatos();
 	
