@@ -1,7 +1,7 @@
 package servicios;
 import datos.IDatos;
 import datos.ImpDatos;
-public class ImpServicios implements IServicios {
+public class ImpServicios implements nuevonombre {
 	
 	private IDatos datos=new ImpDatos();
 	@Override
