@@ -1,5 +1,6 @@
 package control;
 
+<<<<<<< HEAD
 public class Main{
 
 	public static void main(String[] args) {
@@ -14,6 +15,14 @@ public class Main{
 
 		new Test().inicializar();
 
+=======
+public class Main {
+
+	public static void main(String[] args) {
+		new Test().inicializar();
+		System.out.println("E modificado el main");
+		System.out.println("Esta es la segund liena");
+>>>>>>> 762d3521bfdc77f1904e8963b2c28ee9ecc31b1d
 	}
 
 }
