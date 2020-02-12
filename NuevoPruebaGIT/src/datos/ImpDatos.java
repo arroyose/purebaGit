@@ -1,5 +1,4 @@
 package datos;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -173,9 +172,3 @@ public class ImpDatos implements IDatos {
 	}
 
 }
-	
-	
-
-	
-
-

@@ -4,12 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+<<<<<<< HEAD
 import utilidades.CargarFichero;
+=======
+>>>>>>> baae20291b615d13d906f8e236fc8133ecb59e74
 import datos.ImpDatos;
 import modelos.Socios;
 
 public class Test {
 	
+<<<<<<< HEAD
 	public void crearSocio() {
 		ImpDatos objDatos = new ImpDatos();
 		Socios socioPrueba = new Socios("German","Madrid");
@@ -23,6 +27,14 @@ public class Test {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+=======
+	public void inicializar() {
+		
+		ImpDatos objDatos = new ImpDatos();
+		Socios socioPrueba = new Socios("German","Madrid");
+		objDatos.addSocio(socioPrueba);
+		
+>>>>>>> baae20291b615d13d906f8e236fc8133ecb59e74
 		
 	}
 	

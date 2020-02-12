@@ -1,6 +1,7 @@
 package servicios;
 import datos.IDatos;
 import datos.ImpDatos;
+<<<<<<< HEAD
 import modelos.Peliculas;
 import modelos.Socios;
 
@@ -21,6 +22,9 @@ import modelos.Socios;
  */
 
 public class ImpServicios implements IServicios {
+=======
+public class ImpServicios implements nuevonombre {
+>>>>>>> baae20291b615d13d906f8e236fc8133ecb59e74
 	
 	private IDatos datos=new ImpDatos();
 	
