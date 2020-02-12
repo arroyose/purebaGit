@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import gui.Menu;
 import modelos.CategoriaPeliculas;
 import modelos.Peliculas;
@@ -23,8 +20,7 @@ import modelos.Socios;
  */
 
 public class movieflix {
-	
-	private static final Logger logger = LogManager.getLogger("movieflix");
+
 	private ImpServicios servicios = new ImpServicios();
 
 	public void mostrarMovieflix() {
@@ -44,9 +40,9 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 2) {
+			if (seleccion < 1 || seleccion > 3) {
 				correcto = false;
-				logger.info("Introduce un numero correcto");
+				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 
@@ -69,7 +65,7 @@ public class movieflix {
 			}
 			else {
 				if (intentos >= 0) {
-				logger.info("Credenciales incorrectas, intentos restantes  " +intentos);
+				System.out.println("Credenciales incorrectas, intentos restantes  " +intentos);
 				intentos--;
 				
 			}else {
@@ -83,8 +79,11 @@ public class movieflix {
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
+		
+		
+		case 3: 
+			System.exit(0);
 		}
-
 	}
 	/**
 	 * @author gsancho
@@ -108,7 +107,7 @@ public class movieflix {
 
 			if (seleccion < 1 || seleccion > 2) {
 				correcto = false;
-				logger.info("Introduce un numero correcto");
+				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -148,7 +147,7 @@ public class movieflix {
 
 			if (seleccion < 1 || seleccion > 3) {
 				correcto = false;
-				logger.info("Introduce un numero correcto");
+				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -208,34 +207,39 @@ public class movieflix {
 
 		case 2:
 
-			logger.info("Servicio en construccion, disculpen las molestias");
-			
+			System.out.println("Servicio en construccion, disculpen las molestias");
 			break;
 
 		case 3:
-			logger.info("Servicio en construccion, disculpen las molestias");
+			System.out.println("Servicio en construccion, disculpen las molestias");
 			break;
 		}
 
 	}
 
-public void adminSocios() {
+	public void adminSocios() {
 		
 		int seleccion = 0;
 		boolean correcto = false;
+
 		do {
+
 			try {
+
 				seleccion = LecturaDeDatos.leerInteger();
 				correcto = true;
 			} catch (InputMismatchException e) {
+
 				correcto = false;
 			}
+
 			if (seleccion < 1 || seleccion > 4) {
 				correcto = false;
 				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
+
 		case 1:
 			
 			
@@ -325,7 +329,7 @@ public void adminSocios() {
 
 			if (seleccion < 1 || seleccion > 7) {
 				correcto = false;
-				logger.info("Introduce un numero correcto");
+				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -334,9 +338,11 @@ public void adminSocios() {
 			try {
 				servicios.listarPeliculas();
 			} catch (Exception e) {
-				logger.error("Error al realizar una consulta en la BBDD",e);
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			Menu.menuUsuario();
+			this.menuSocios2();
 			break;
 
 		case 2:
@@ -357,12 +363,11 @@ public void adminSocios() {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			Menu.menuUsuario();
+			this.menuSocios2();
 			break;
 
 		case 3:
-
-			logger.info("Servicio en construccion, disculpen las molestias");
 
 			int id_socio =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
 			try {
@@ -376,13 +381,13 @@ public void adminSocios() {
 			break;
 		case 4:
 
-			logger.info("Servicio en construccion, disculpen las molestias");
+			System.out.println("Servicio en construccion, disculpen las molestias");
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
 			
+			
 		case 5:
-
 			try {
 				servicios.listaPeliculasMasValoradas();
 			} catch (Exception e) {
