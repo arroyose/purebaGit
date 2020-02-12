@@ -327,7 +327,7 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 5) {
+			if (seleccion < 1 || seleccion > 7) {
 				correcto = false;
 				System.out.println("Introduce un numero correcto");
 			}
@@ -369,7 +369,13 @@ public class movieflix {
 
 		case 3:
 
-			System.out.println("Servicio en construccion, disculpen las molestias");
+			int id_socio =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
+			try {
+				servicios.listarPeliculasPuedeVer(id_socio);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
@@ -392,7 +398,12 @@ public class movieflix {
 			this.menuSocios2();
 		
 		case 6:
-			System.out.println("Servicio en construccion, disculpen las molestias");
+			try {
+				servicios.listarPeliculasMasVistas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Menu.menuUsuario();
 			this.menuSocios2();
 		
