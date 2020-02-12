@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import gui.Menu;
 import modelos.CategoriaPeliculas;
 import modelos.Peliculas;
@@ -20,7 +23,8 @@ import modelos.Socios;
  */
 
 public class movieflix {
-
+	
+	private static final Logger logger = LogManager.getLogger("movieflix");
 	private ImpServicios servicios = new ImpServicios();
 
 	public void mostrarMovieflix() {
@@ -65,7 +69,7 @@ public class movieflix {
 			}
 			else {
 				if (intentos >= 0) {
-				System.out.println("Credenciales incorrectas, intentos restantes  " +intentos);
+				logger.info("Credenciales incorrectas, intentos restantes  " +intentos);
 				intentos--;
 				
 			}else {
@@ -299,8 +303,7 @@ public class movieflix {
 			try {
 				servicios.listarPeliculas();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Error al realizar una consulta en la BBDD",e);
 			}
 
 			break;

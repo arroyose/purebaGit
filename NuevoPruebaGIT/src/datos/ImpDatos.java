@@ -3,6 +3,10 @@ package datos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.PreparedStatement;
 import modelos.Peliculas;
 import modelos.Socios;
@@ -14,6 +18,9 @@ import utilidades.LecturaDeDatos;
  *
  */
 public class ImpDatos implements IDatos {
+	
+	private static final Logger logger = LogManager.getLogger("ImpDatos");
+	
 	/**
 	 *
 	 * Metodo para añadir una pelicula a nuestro base de datos.
@@ -38,7 +45,7 @@ public class ImpDatos implements IDatos {
 							+ "'" + ")");
 
 		} catch (SQLException e) {
-
+			logger.error("Error al añadir una peliculas en la BBDD",e);
 			e.printStackTrace();
 		} finally {
 			c.close();
@@ -71,8 +78,7 @@ public class ImpDatos implements IDatos {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Errror al listar peliculas",e);
 		} finally {
 
 			c.close();
@@ -106,8 +112,7 @@ public class ImpDatos implements IDatos {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error al listar peliculas por categoria",e);
 		} finally {
 
 			c.close();
@@ -136,7 +141,7 @@ public class ImpDatos implements IDatos {
 				System.out.format("%-12s \n","  Puntuacion: "+rs.getInt(3));
 			}
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Error al listar peliculas mas valoradas",e);
 		}finally {
 			con.close();
 		}
@@ -156,7 +161,7 @@ public class ImpDatos implements IDatos {
 			Statement statement = conexion.getConnection().createStatement();
 			statement.executeUpdate(consulta);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error al añadir un usuario a la BBDD",e);
 		} finally {
 			conexion.close();
 		}
@@ -182,7 +187,7 @@ public class ImpDatos implements IDatos {
 				  System.out.println("id: "+camposUsuarios[0]+"  nombre: "+camposUsuarios[1] + " Fecha de nacimiento: "+camposUsuarios[2]+" ciudad: "+camposUsuarios[3]+"\n");
 				}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error al listar usuarios",e);
 		}finally {
 			conexion.close();
 		}
@@ -209,8 +214,7 @@ public class ImpDatos implements IDatos {
 					rs.getString("ciudad")));
 			
 		}catch(SQLException e){
-
-			e.printStackTrace();
+			logger.error("Error buscar un id en la  BBDD",e);
 		}finally{
 	
 			con.close();
@@ -237,14 +241,14 @@ public class ImpDatos implements IDatos {
 			    //logger.info("Error en la eliminacion");
 			}
 		}catch(SQLException e){
-				
-				e.printStackTrace();
+			logger.error("Error al eliminar un usuario de la BBDD",e);
 		}finally{
 				con.close();
 		}
 	}
 	/**
 	 *  Metodo de modificar la informacion del usuario de nuestro base de datos 
+	 *  
 	 * 
 	 */
 	public void modificarUsuario() {
@@ -253,7 +257,7 @@ public class ImpDatos implements IDatos {
 		ConexionDB conexion = new ConexionDB();
 		int id = LecturaDeDatos.leerInteger("Introduce el id del socio");
 		String nombre = LecturaDeDatos.leerString("Introduce el nombre");
-		String fechaNacimiento = LecturaDeDatos.leerString("Introduce la fecha de nacimiento");
+		String fechaNacimiento = LecturaDeDatos.leerString("Introduce la fecha de nacimiento YYYY\\MM\\DD");
 		String ciudad = LecturaDeDatos.leerString("Introduce la ciudad");
 		
 		String consulta = "UPDATE socio\r\n" + 
@@ -273,7 +277,7 @@ public class ImpDatos implements IDatos {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error al modificar usuario de la BDD",e);
 		}finally {
 			conexion.close();
 		}
@@ -298,10 +302,9 @@ public class ImpDatos implements IDatos {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error al listar peliculas mas vistas",e);
 		}finally {
 			conexion.close();
-		
 		}
 		
 	}
