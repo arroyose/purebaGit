@@ -4,8 +4,8 @@ package control;
 public class main {
 
 	public static void main(String[] args) {
-		new movieflix().mostrarMovieflix();
-
+		//new movieflix().mostrarMovieflix();
+		new Test();
 	}
 
 }

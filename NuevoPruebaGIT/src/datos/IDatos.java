@@ -21,4 +21,5 @@ public interface IDatos {
     public void addSocio(Socios socio) throws Exception;
     public void listadoPeliculasCategoria(int numCategoria) throws Exception;
     public void listadoUsuarios() throws Exception;
+    public void listarPeliculasMasVistas() throws Exception;
 }

@@ -51,4 +51,12 @@ public class ImpServicios implements IServicios {
 		datos.listadoUsuarios();
 		
 	}
+	
+	public void listarPeliculasMasVistas() throws Exception{
+		datos.listaPeliculasMasVistas();
+	}
+
+
+	
+
 }
