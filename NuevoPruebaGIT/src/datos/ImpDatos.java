@@ -274,7 +274,55 @@ public class ImpDatos implements IDatos {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			conexion.close();
 		}
 	
 	}
-}		
+
+	
+	public void listarPeliculasMasVistas() {
+		Statement statement = null;
+		ResultSet rs = null;
+		ConexionDB conexion = new ConexionDB();
+		
+		String consulta = "SELECT peliculas.id_peliculas , peliculas.nombre, count(*) as Frecuencia FROM  peliculas  JOIN visualizaciones\r\n" + 
+				"where peliculas.id_peliculas=visualizaciones.id_pelicula Group by visualizaciones.id_pelicula order by Frecuencia DESC Limit 5;";
+		
+
+	}
+	
+	public void listarPeliculasPuedeVer(int id_socio) {
+		Statement statement = null;
+		ResultSet rs = null;
+		ConexionDB conexion = new ConexionDB();
+		
+		String consulta = "SELECT * FROM movieflix.supcripciones where movieflix.supcripciones.socio_id="+id_socio;
+		try {
+			statement = conexion.getConnection().createStatement();
+			rs = statement.executeQuery(consulta);
+			if (rs==null) {
+				System.out.println("El socio no tiene peliculas asociadas a su cuenta");
+			}else {
+				
+				System.out.println("*********************************:");
+				System.out.println("Peliculas que puede ver un usuario:");
+				System.out.println("*********************************:");
+				
+				while (rs.next()) {
+					int cod_categoria=rs.getInt("categoria_id");
+					System.out.println("Peliculas de la categoria"+cod_categoria);
+					listadoPeliculasCategoria(cod_categoria);
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			conexion.close();
+		}
+		
+	}
+}
+
+
