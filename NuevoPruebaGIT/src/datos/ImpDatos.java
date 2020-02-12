@@ -7,6 +7,7 @@ import java.sql.Statement;
 import modelos.Peliculas;
 import modelos.Socios;
 import utilidades.ConexionDB;
+import utilidades.LecturaDeDatos;
 
 /**
  * @author admin
@@ -70,7 +71,6 @@ public class ImpDatos implements IDatos {
 
 			e.printStackTrace();
 		} finally {
-
 			c.close();
 		}
 	}
@@ -170,6 +170,39 @@ public class ImpDatos implements IDatos {
 		}finally {
 			conexion.close();
 		}
+		
+	}
+	
+	public void modificarUsuario() {
+		Statement statement = null;
+		ResultSet rs = null;
+		ConexionDB conexion = new ConexionDB();
+		int id = LecturaDeDatos.leerInteger("Introduce el id del socio");
+		String nombre = LecturaDeDatos.leerString("Introduce el nombre");
+		String fechaNacimiento = LecturaDeDatos.leerString("Introduce la fecha de nacimiento");
+		String ciudad = LecturaDeDatos.leerString("Introduce la ciudad");
+		
+		String consulta = "UPDATE socio\r\n" + 
+				"SET nombre = '"+nombre+"',fecha_nacimiento = "+"'"+fechaNacimiento+"'"+",ciudad = '"+ciudad+"'\r\n" + 
+				"WHERE id_socio = "+id+"";
+		
+		try {
+			statement = conexion.getConnection().createStatement();
+			
+			if(statement.executeUpdate(consulta)==0) {
+				System.out.println("No se ha encontrado el socio");
+			}else {
+				System.out.println("Socio modificado con datos: ");
+				System.out.println("Nombre: "+nombre);
+				System.out.println("fecha de nacimientos: "+fechaNacimiento);
+				System.out.println("Ciudad: "+ciudad);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		
 		
 	}
 		
