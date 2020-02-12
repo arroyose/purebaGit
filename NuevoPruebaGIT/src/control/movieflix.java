@@ -4,11 +4,20 @@ import servicios.ImpServicios;
 import utilidades.LecturaDeDatos;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 
 import gui.Menu;
 import modelos.CategoriaPeliculas;
 import modelos.Peliculas;
+import modelos.Socios;
+
+
+/**
+ * @author gsancho
+ *@version 1.0.0
+ *Implementacion  de los metodos que ejecutan los procesos del programa
+ */
 
 public class movieflix {
 
@@ -73,7 +82,10 @@ public class movieflix {
 		}
 
 	}
-
+	/**
+	 * @author gsancho
+	 * 
+	 */
 	public void menuAdmin2() {
 
 		int seleccion = 0;
@@ -105,12 +117,15 @@ public class movieflix {
 
 		case 2:
 			Menu.menuAdministradorUsuarios();
-
+      this.adminSocios();
 			break;
 		}
 
 	}
-
+	/**
+	 * @author gsancho
+	 *
+	 */
 	public void adminPeliculas() {
 
 		int seleccion = 0;
@@ -200,7 +215,62 @@ public class movieflix {
 	}
 
 	public void adminSocios() {
+		
+		int seleccion = 0;
+		boolean correcto = false;
 
+		do {
+
+			try {
+
+				seleccion = LecturaDeDatos.leerInteger();
+				correcto = true;
+			} catch (InputMismatchException e) {
+
+				correcto = false;
+			}
+
+			if (seleccion < 1 || seleccion > 3) {
+				correcto = false;
+				System.out.println("Introduce un numero correcto");
+			}
+		} while (!correcto);
+		switch (seleccion) {
+
+		case 1:
+			
+			
+			
+			String nombre = LecturaDeDatos.leerString("Introduce el nombre o alias del socio");
+			String decision =LecturaDeDatos.leerString("¿Quiere introducir la fecha de nacimiento? s/n");
+			String si = "s";
+			if (decision.toLowerCase().charAt(0)==si.toLowerCase().charAt(0)) {
+			  int dia = LecturaDeDatos.leerInteger("Introduce el dia");
+			  int mes = LecturaDeDatos.leerInteger("Introduce el mes");
+		      int anio = LecturaDeDatos.leerInteger("Introduce el año");
+				
+		      LocalDate fecha =LocalDate.of(anio, mes, dia);
+		      
+		      String ciudad = LecturaDeDatos.leerString("Introduce la ciudad");
+		      try {
+				servicios.addSocios(new Socios(nombre,fecha,ciudad));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}else {
+				String ciudad2 = LecturaDeDatos.leerString("Introduce la ciudad");
+				try {
+					servicios.addSocios(new Socios(nombre,ciudad2));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			
+			break;
+	}
 	}
 
 	public void menuSocios2() {
