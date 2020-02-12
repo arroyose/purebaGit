@@ -102,7 +102,7 @@ public class ImpDatos implements IDatos {
 			Statement ejecutar = c.getConnection().createStatement();
 			ResultSet resultado = ejecutar.executeQuery(query);
 
-			System.out.println("Peliculas: ");
+			System.out.println("\n Peliculas de la categoria "+numCategoria+"\n");
 			while (resultado.next()) {
 				System.out.print("Id: " + resultado.getInt(1));
 				System.out.print(" : " + resultado.getString(2));
@@ -146,12 +146,40 @@ public class ImpDatos implements IDatos {
 			con.close();
 		}
 	}
-	
+	/**
+	 * Metodo que muestra la lista de peliculas que no puede ver el socio
+	 * @param id este parametro es el identificador del usuario y es de caracter INT
+	 */
+	public void listaPeliculasNoPuedeVer(int id) {
+		ConexionDB con=null;
+		try {
+				con=new ConexionDB();
+				Statement stmt=con.getConnection().createStatement();
+				String query="SELECT categoria_peliculas.id_categoria FROM categoria_peliculas "
+						+ "where categoria_peliculas.id_categoria <> (SELECT categoria_id "
+						+ "FROM movieflix.supcripciones where movieflix.supcripciones.socio_id="+id+");";
+				try{
+					ResultSet rs=stmt.executeQuery(query);
+					System.out.println("Las peliculas que puedes ver:\n");
+					while(rs.next()) {
+						listadoPeliculasCategoria(rs.getInt(1));
+				}
+				}catch(SQLException e) {
+					System.out.println("El socio "+id +", Puedes ver todas las peliculas ");
+				}		
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			con.close();
+		}	
+	}
 	/**
 	 * Metodo para añadir un socio a nuestro base de datos.
 	 * @param socio es un objecto de tipo Socios donde viene incorporado el nombre, fecha de nacimiento y ciudad.
 	 *     
 	 */
+	
 	public void addSocio(Socios socio) {
 		ConexionDB conexion = new ConexionDB();
 		String consulta = String.format(
@@ -331,7 +359,7 @@ public class ImpDatos implements IDatos {
 				
 				while (rs.next()) {
 					int cod_categoria=rs.getInt("categoria_id");
-					System.out.println("Peliculas de la categoria"+cod_categoria);
+				    //System.out.println("Peliculas de la categoria"+cod_categoria);
 					listadoPeliculasCategoria(cod_categoria);
 				}
 				

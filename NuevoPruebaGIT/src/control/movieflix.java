@@ -293,7 +293,7 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 5) {
+			if (seleccion < 1 || seleccion > 7) {
 				correcto = false;
 				logger.info("Introduce un numero correcto");
 			}
@@ -332,7 +332,17 @@ public class movieflix {
 
 		case 3:
 
+<<<<<<< HEAD
 			logger.info("Servicio en construccion, disculpen las molestias");
+=======
+			int id_socio =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
+			try {
+				servicios.listarPeliculasPuedeVer(id_socio);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+>>>>>>> 15e5e08d352916ed6362c04295302c487853ee4a
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
@@ -344,6 +354,29 @@ public class movieflix {
 			break;
 			
 		case 5:
+<<<<<<< HEAD
+=======
+			try {
+				servicios.listaPeliculasMasValoradas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuUsuario();
+			this.menuSocios2();
+		
+		case 6:
+			try {
+				servicios.listarPeliculasMasVistas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuUsuario();
+			this.menuSocios2();
+		
+		case 7:
+>>>>>>> 15e5e08d352916ed6362c04295302c487853ee4a
 			
 			this.mostrarMovieflix();
 		}
