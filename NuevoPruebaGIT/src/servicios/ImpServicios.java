@@ -46,4 +46,9 @@ public class ImpServicios implements IServicios {
 	 public void listadoPeliculasCategoria(int numCategoria) throws Exception {
 		 datos.listadoPeliculasCategoria(numCategoria);
 	 }
+	@Override
+	public void listadoUsuarios() throws Exception {
+		datos.listadoUsuarios();
+		
+	}
 }
