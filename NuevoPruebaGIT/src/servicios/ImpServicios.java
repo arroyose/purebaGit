@@ -5,6 +5,21 @@ import modelos.Peliculas;
 import modelos.Socios;
 
 
+
+
+
+
+
+/**
+ * @author Gsancho
+ *  <p>Implementacion de Servicios, llama a Implementacion  datos 
+ *  Fecha : 11/02/2020
+ *  @version 1.0.0 
+ *  
+ *  
+ *  
+ */
+
 public class ImpServicios implements IServicios {
 	
 	private IDatos datos=new ImpDatos();
@@ -27,9 +42,15 @@ public class ImpServicios implements IServicios {
 
 	
 	}
+
 	@Override
 	public void listadoUsuarios() throws Exception {
 
 		datos.listadoUsuarios();
 	}
+
+	 public void listadoPeliculasCategoria(int numCategoria) throws Exception {
+		 datos.listadoPeliculasCategoria(numCategoria);
+	 }
+
 }
