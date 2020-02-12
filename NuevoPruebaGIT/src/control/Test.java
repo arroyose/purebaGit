@@ -17,12 +17,10 @@ public class Test {
 	}
 	
 	public void inicializar() {	
-		try {
-			CargarFichero objCargar = new CargarFichero(new FileReader(new File("peliculas_numCat.txt")));
-			objCargar.cargarFichero();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		
+		ImpDatos datos = new ImpDatos();
+		
+		datos.modificarUsuario();
 		
 	}
 

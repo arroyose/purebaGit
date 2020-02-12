@@ -41,8 +41,6 @@ public class Socios {
 	}
 
 
-
-
 	public Socios(String nombre) {
 		super();
 		this.nombre = nombre;
