@@ -51,4 +51,8 @@ public class ImpServicios implements IServicios {
 		datos.listadoUsuarios();
 		
 	}
+
+    public void listarPeliculasPuedeVer(int id_socio)throws Exception {
+    	datos.listarPeliculasPuedeVer(id_socio);
+    }
 }
