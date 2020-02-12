@@ -6,7 +6,7 @@ public class Test {
 	
 	public Test(){
 		ImpDatos datos = new ImpDatos();
-		datos.listaPeliculasMasVistas();
+		datos.listarPeliculasMasVistas();
 	}
 
 }

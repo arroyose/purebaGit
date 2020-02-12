@@ -53,7 +53,7 @@ public class ImpServicios implements IServicios {
 	}
 	
 	public void listarPeliculasMasVistas() throws Exception{
-		datos.listaPeliculasMasVistas();
+		datos.listarPeliculasMasVistas();
 	}
 
 
