@@ -10,9 +10,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import modelos.Peliculas;
 
 public class CargarFichero {
+	
+	private static final Logger logger = LogManager.getLogger("CargarFichero");
 	
 	private BufferedReader bf;
 	private ConexionDB conexion;
@@ -45,7 +50,7 @@ public class CargarFichero {
 			ejecutar = conexion.getConnection().createStatement();
 			ejecutar.executeUpdate("INSERT INTO movieflix.peliculas (nombre, year, sinopsis, categoria_pelicula) VALUES ("+"'"+param[0]+"'"+","+"'" +param[1]+"'"+","+"'"+ " "+"'"+"," + "'"+param[2]+"'"+")");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.info("error al insertar peliculas en la BBDD",e);
 		}
 				
 	}
@@ -54,7 +59,7 @@ public class CargarFichero {
 		try {
 			cagarPeliculasDB();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.info("error al cargar el fichero",e);
 		}
 	}
 

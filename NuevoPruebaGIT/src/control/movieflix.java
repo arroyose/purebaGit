@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import gui.Menu;
 import modelos.CategoriaPeliculas;
 import modelos.Peliculas;
@@ -20,7 +23,8 @@ import modelos.Socios;
  */
 
 public class movieflix {
-
+	
+	private static final Logger logger = LogManager.getLogger("movieflix");
 	private ImpServicios servicios = new ImpServicios();
 
 	public void mostrarMovieflix() {
@@ -40,9 +44,9 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 3) {
+			if (seleccion < 1 || seleccion > 2) {
 				correcto = false;
-				System.out.println("Introduce un numero correcto");
+				logger.info("Introduce un numero correcto");
 			}
 		} while (!correcto);
 
@@ -65,7 +69,7 @@ public class movieflix {
 			}
 			else {
 				if (intentos >= 0) {
-				System.out.println("Credenciales incorrectas, intentos restantes  " +intentos);
+				logger.info("Credenciales incorrectas, intentos restantes  " +intentos);
 				intentos--;
 				
 			}else {
@@ -79,11 +83,8 @@ public class movieflix {
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
-		
-		
-		case 3: 
-			System.exit(0);
 		}
+
 	}
 	/**
 	 * @author gsancho
@@ -107,7 +108,7 @@ public class movieflix {
 
 			if (seleccion < 1 || seleccion > 2) {
 				correcto = false;
-				System.out.println("Introduce un numero correcto");
+				logger.info("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -147,7 +148,7 @@ public class movieflix {
 
 			if (seleccion < 1 || seleccion > 3) {
 				correcto = false;
-				System.out.println("Introduce un numero correcto");
+				logger.info("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -207,11 +208,12 @@ public class movieflix {
 
 		case 2:
 
-			System.out.println("Servicio en construccion, disculpen las molestias");
+			logger.info("Servicio en construccion, disculpen las molestias");
+			
 			break;
 
 		case 3:
-			System.out.println("Servicio en construccion, disculpen las molestias");
+			logger.info("Servicio en construccion, disculpen las molestias");
 			break;
 		}
 
@@ -233,9 +235,9 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 4) {
+			if (seleccion < 1 || seleccion > 3) {
 				correcto = false;
-				System.out.println("Introduce un numero correcto");
+				logger.info("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -270,45 +272,9 @@ public class movieflix {
 					e.printStackTrace();
 				}
 			}
-			Menu.menuAdministrador();
-			this.menuAdmin2();
-			break;
 			
-		case 2 : 
-			try {
-				servicios.modificarUsuario();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Menu.menuAdministrador();
-			this.menuAdmin2();
 			
 			break;
-			
-		case 3 :
-		int id =	LecturaDeDatos.leerInteger("Introduce el ID del usuario a eliminar");
-			try {
-				servicios.eliminarUsuario(id);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-				Menu.menuAdministrador();
-				this.menuAdmin2();
-				
-		case 4 : 
-			try {
-				servicios.listadoUsuarios();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Menu.menuAdministrador();
-			this.menuAdmin2();
-			
-			break;		
-			
 	}
 	}
 
@@ -329,7 +295,7 @@ public class movieflix {
 
 			if (seleccion < 1 || seleccion > 7) {
 				correcto = false;
-				System.out.println("Introduce un numero correcto");
+				logger.info("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
@@ -338,11 +304,9 @@ public class movieflix {
 			try {
 				servicios.listarPeliculas();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Error al realizar una consulta en la BBDD",e);
 			}
-			Menu.menuUsuario();
-			this.menuSocios2();
+
 			break;
 
 		case 2:
@@ -363,11 +327,12 @@ public class movieflix {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Menu.menuUsuario();
-			this.menuSocios2();
+
 			break;
 
 		case 3:
+
+			logger.info("Servicio en construccion, disculpen las molestias");
 
 			int id_socio =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
 			try {
@@ -380,6 +345,7 @@ public class movieflix {
 			this.menuSocios2();
 			break;
 		case 4:
+<<<<<<< HEAD
 			int id =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
 			try {
 				servicios.listaPeliculasNoPuedeVer(id);
@@ -387,12 +353,16 @@ public class movieflix {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+=======
+
+			logger.info("Servicio en construccion, disculpen las molestias");
+>>>>>>> ad38eeb310f46760e06aa2a62c0e5d6af3b066a9
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
 			
-			
 		case 5:
+
 			try {
 				servicios.listaPeliculasMasValoradas();
 			} catch (Exception e) {
