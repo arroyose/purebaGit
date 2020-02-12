@@ -130,10 +130,9 @@ public class ImpDatos implements IDatos {
 					"Group by visualizaciones.id_pelicula order by puntuacion DESC limit 5;";
 			ResultSet rs=stmt.executeQuery(query);
 			
-			System.out.println("Peliculas: ");
+			System.out.println("Las cinco peliculas mas valoradas: \n");
 			while(rs.next()) {
-				System.out.format("%s","Id:"+rs.getInt(1));
-				System.out.format("%-20s"," : " + rs.getString(2));
+				System.out.format("%-20s", rs.getString(2));
 				System.out.format("%-12s \n","  Puntuacion: "+rs.getInt(3));
 			}
 		}catch(SQLException e) {
