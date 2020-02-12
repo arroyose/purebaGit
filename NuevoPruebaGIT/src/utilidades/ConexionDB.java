@@ -21,6 +21,7 @@ import java.sql.Statement;
 
 public class ConexionDB {
 	
+	private static final Logger logger = LogManager.getLogger("ConexionDB");
 	
     private static Connection connection = null;
     private static String BD = "movieflix";
@@ -53,7 +54,7 @@ public class ConexionDB {
         try {
             connection.close();
         } catch (SQLException se) {
-            System.out.println("Exception closing Connection: " + se);
+        	logger.error("Error al cerrar la base de datos",e);
         }
     }
 

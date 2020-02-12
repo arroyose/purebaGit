@@ -169,7 +169,7 @@ public class ImpDatos implements IDatos {
 				}		
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("error al poder listar peliculas que no puede ver el usuario",e);
 		}finally {
 			con.close();
 		}	
@@ -330,7 +330,7 @@ public class ImpDatos implements IDatos {
 				System.out.printf( "%-30.30s %-20.20s\n", rs.getString("nombre"), rs.getString("Frecuencia") );
 			}
 		} catch (SQLException e) {
-			//logger.error("Error al listar peliculas mas vistas",e);
+			logger.error("Error al listar peliculas mas vistas",e);
 		}finally {
 			conexion.close();
 		}
