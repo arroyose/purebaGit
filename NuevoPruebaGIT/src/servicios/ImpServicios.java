@@ -25,7 +25,8 @@ public class ImpServicios implements IServicios {
 	
 	
 	@Override
-
+    
+	
 	public void addPeliculas(Peliculas pelicula) throws Exception {
 		// TODO Auto-generated method stub
       datos.addPeliculas(pelicula);
