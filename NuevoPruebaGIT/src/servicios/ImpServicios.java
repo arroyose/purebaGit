@@ -5,11 +5,6 @@ import modelos.Peliculas;
 import modelos.Socios;
 
 
-
-
-
-
-
 public class ImpServicios implements IServicios {
 	
 	private IDatos datos=new ImpDatos();
@@ -18,7 +13,6 @@ public class ImpServicios implements IServicios {
 	@Override
 
 	public void addPeliculas(Peliculas pelicula) throws Exception {
-		// TODO Auto-generated method stub
       datos.addPeliculas(pelicula);
 	}
 	@Override
@@ -32,5 +26,10 @@ public class ImpServicios implements IServicios {
 		datos.addSocio(socio);
 
 	
+	}
+	@Override
+	public void listadoUsuarios() throws Exception {
+
+		datos.listadoUsuarios();
 	}
 }

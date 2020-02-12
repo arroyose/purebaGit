@@ -25,5 +25,14 @@ public class Test {
 		}
 		
 	}
+	
+	public void listarUsuario() {
+		ImpDatos objDatos = new ImpDatos();
+		try {
+			objDatos.listadoUsuarios();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

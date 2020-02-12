@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.mysql.cj.ParseInfo;
+
 import modelos.Peliculas;
 import modelos.Socios;
 import utilidades.ConexionDB;
@@ -13,7 +15,6 @@ public class ImpDatos implements IDatos{
 	 * @author Fernando Garcia
 	 * @param El Objeto socio nos proporcionara el nombre , fecha y ciudad para insertarlo en la base de datos
 	 */
-
 
 	public  void addSocio(Socios socio) {
 
@@ -71,7 +72,7 @@ public class ImpDatos implements IDatos{
 	@Override
 	public void listarPeliculas() throws Exception {
 		
-ConexionDB c = null;
+		ConexionDB c = null;
 		
 		try {
 			
@@ -89,7 +90,6 @@ ConexionDB c = null;
 				           
 				        }
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}finally {
 				
@@ -97,6 +97,34 @@ ConexionDB c = null;
 				c.close();
 				}
 	}
+
+	@Override
+	public void listadoUsuarios() throws Exception {
+		ConexionDB conexion = new ConexionDB();
+		String consulta = "select * from Socio";
+		String [] camposUsuarios = new String[4];
+		try {
+			Statement statement = conexion.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery(consulta);
+			
+			while (rs.next()) {
+					camposUsuarios[0]= Integer.toString(rs.getInt("id_socio")); 
+					camposUsuarios[1]= rs.getString("nombre");
+					camposUsuarios[2]= rs.getString("fecha_nacimiento");
+					camposUsuarios[3]= rs.getString("ciudad");
+				  System.out.println("id: "+camposUsuarios[0]+"  nombre: "+camposUsuarios[1] + " Fecha de nacimiento: "+camposUsuarios[2]+" ciudad: "+camposUsuarios[3]+"\n");
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			conexion.close();
+		}
+		
+	}
+	
+	
+
+	
 	}
 
 
