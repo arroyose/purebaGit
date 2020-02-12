@@ -44,7 +44,7 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 2) {
+			if (seleccion < 1 || seleccion > 3) {
 				correcto = false;
 				System.out.println("Introduce un numero correcto");
 			}
@@ -83,8 +83,11 @@ public class movieflix {
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
+		
+		
+		case 3: 
+			System.exit(0);
 		}
-
 	}
 	/**
 	 * @author gsancho
@@ -234,7 +237,7 @@ public class movieflix {
 				correcto = false;
 			}
 
-			if (seleccion < 1 || seleccion > 3) {
+			if (seleccion < 1 || seleccion > 4) {
 				correcto = false;
 				System.out.println("Introduce un numero correcto");
 			}
@@ -271,9 +274,45 @@ public class movieflix {
 					e.printStackTrace();
 				}
 			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
+			break;
 			
+		case 2 : 
+			try {
+				servicios.modificarUsuario();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
 			
 			break;
+			
+		case 3 :
+		int id =	LecturaDeDatos.leerInteger("Introduce el ID del usuario a eliminar");
+			try {
+				servicios.eliminarUsuario(id);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				Menu.menuAdministrador();
+				this.menuAdmin2();
+				
+		case 4 : 
+			try {
+				servicios.listadoUsuarios();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
+			
+			break;		
+			
 	}
 	}
 
@@ -305,7 +344,8 @@ public class movieflix {
 			} catch (Exception e) {
 				logger.error("Error al realizar una consulta en la BBDD",e);
 			}
-
+			Menu.menuUsuario();
+			this.menuSocios2();
 			break;
 
 		case 2:
@@ -326,7 +366,8 @@ public class movieflix {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			Menu.menuUsuario();
+			this.menuSocios2();
 			break;
 
 		case 3:
@@ -342,7 +383,23 @@ public class movieflix {
 			this.menuSocios2();
 			break;
 			
+			
 		case 5:
+			try {
+				servicios.listaPeliculasMasValoradas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuUsuario();
+			this.menuSocios2();
+		
+		case 6:
+			System.out.println("Servicio en construccion, disculpen las molestias");
+			Menu.menuUsuario();
+			this.menuSocios2();
+		
+		case 7:
 			
 			this.mostrarMovieflix();
 		}

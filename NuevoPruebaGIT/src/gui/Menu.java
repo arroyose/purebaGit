@@ -13,6 +13,7 @@ public class Menu {
         System.out.println("*        Por favor, escoge una opcion: ");
         System.out.println("*        1.-Acceder como administrador");
         System.out.println("*        2.-Acceder como usuario");
+        System.out.println("*        3.-Apagar el sistema");
 	}
 	
 	
@@ -32,6 +33,7 @@ public class Menu {
         System.out.println("*        1.- Añadir Pelicula ");
         System.out.println("*        2.- Añadir Sinopsis");
         System.out.println("*        3.- Eliminar Pelicula");
+    
 		
 	}
 	
@@ -40,6 +42,7 @@ public class Menu {
         System.out.println("*        1.- Añadir Socio ");
         System.out.println("*        2.- Modificar Socio");
         System.out.println("*        3.- Eliminar Socio");
+        System.out.println("*        4.- Listar Socios");
 		
 	}
 	public static void menuUsuario() {
@@ -49,6 +52,8 @@ public class Menu {
         System.out.println("*        2.- Listar peliculas por categoria");
         System.out.println("*        3.- Listar Peliculas que puedo ver");
         System.out.println("*        4.- Listar Peliculas que no puedo ver");
-        System.out.println("         5.- Volver al menu principal");
+        System.out.println("*        5.- Listar Peliculas mas valoradas");
+        System.out.println("*        6.- Listar Peliculas mas vistas");
+        System.out.println("         7.- Volver al menu principal");
 	}
 }
