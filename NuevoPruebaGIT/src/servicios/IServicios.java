@@ -16,5 +16,6 @@ public interface IServicios {
 		public void listarPeliculas() throws Exception;
 		public void addSocios(Socios socio) throws Exception;
         public void listadoPeliculasCategoria(int numCategoria) throws Exception;
+        public void listadoUsuarios() throws Exception;
 
 }
