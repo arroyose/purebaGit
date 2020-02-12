@@ -54,6 +54,6 @@ public class Menu {
         System.out.println("*        4.- Listar Peliculas que no puedo ver");
         System.out.println("*        5.- Listar Peliculas mas valoradas");
         System.out.println("*        6.- Listar Peliculas mas vistas");
-        System.out.println("         7.- Volver al menu principal");
+        System.out.println("*         7.- Volver al menu principal");
 	}
 }

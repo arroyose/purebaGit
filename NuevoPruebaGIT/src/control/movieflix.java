@@ -380,8 +380,13 @@ public class movieflix {
 			this.menuSocios2();
 			break;
 		case 4:
-
-			System.out.println("Servicio en construccion, disculpen las molestias");
+			int id =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
+			try {
+				servicios.listaPeliculasNoPuedeVer(id);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
