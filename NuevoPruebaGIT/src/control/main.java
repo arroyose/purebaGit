@@ -7,7 +7,7 @@ public class main {
 		//new movieflix().mostrarMovieflix();
 
 		ImpDatos prueba=new ImpDatos();
-		prueba.listaPeliculasMasValoradas();
+		prueba.listaPeliculasNoPuedeVer(13);
 		System.out.println("He terminado");
 	}
 

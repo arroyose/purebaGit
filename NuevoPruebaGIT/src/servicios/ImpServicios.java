@@ -60,5 +60,7 @@ public class ImpServicios implements IServicios {
     public void listaPeliculasMasValoradas() throws Exception{
     	datos.listaPeliculasMasValoradas();
     }
-    
+    public void listaPeliculasNoPuedeVer(int id) throws Exception{
+    	datos.listaPeliculasNoPuedeVer(id);
+    }
 }
