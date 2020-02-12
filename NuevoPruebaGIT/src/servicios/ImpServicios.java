@@ -51,6 +51,7 @@ public class ImpServicios implements IServicios {
 		datos.listadoUsuarios();
 		
 	}
+
 	
 	public void listarPeliculasMasVistas() throws Exception{
 		datos.listarPeliculasMasVistas();
@@ -58,5 +59,17 @@ public class ImpServicios implements IServicios {
 
 
 	
+
+
+	public void modificarUsuario() throws Exception{
+		datos.modificarUsuario();
+	}
+    public void eliminarUsuario(int id) throws Exception{
+    	datos.eliminarUsuario(id);
+    }
+    public void listaPeliculasMasValoradas() throws Exception{
+    	datos.listaPeliculasMasValoradas();
+    }
+    
 
 }
