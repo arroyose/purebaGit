@@ -288,7 +288,18 @@ public class ImpDatos implements IDatos {
 		
 		String consulta = "SELECT peliculas.id_peliculas , peliculas.nombre, count(*) as Frecuencia FROM  peliculas  JOIN visualizaciones\r\n" + 
 				"where peliculas.id_peliculas=visualizaciones.id_pelicula Group by visualizaciones.id_pelicula order by Frecuencia DESC Limit 5;";
-		
+		try {
+			statement = conexion.getConnection().createStatement();
+			rs = statement.executeQuery(consulta);
+			System.out.printf( "%-20.20s %-20.20s\n", "Nombre",  "     Visualizaciones" +"\n");
+			while (rs.next()) {
+				System.out.printf( "%-30.30s %-20.20s\n", rs.getString("nombre"), rs.getString("Frecuencia") );
+			}
+		} catch (SQLException e) {
+			//logger.error("Error al listar peliculas mas vistas",e);
+		}finally {
+			conexion.close();
+		}
 
 	}
 	
