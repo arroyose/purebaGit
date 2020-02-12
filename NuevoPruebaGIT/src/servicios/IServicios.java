@@ -17,8 +17,11 @@ public interface IServicios {
 		public void addSocios(Socios socio) throws Exception;
         public void listadoPeliculasCategoria(int numCategoria) throws Exception;
         public void listadoUsuarios() throws Exception;
+        public void listarPeliculasPuedeVer(int id_socio) throws Exception;
+        public void listarPeliculasMasVistas() throws Exception;
         public void modificarUsuario() throws Exception;
         public void eliminarUsuario(int id) throws Exception;
         public void listaPeliculasMasValoradas() throws Exception;
         public void listaPeliculasNoPuedeVer(int id) throws Exception;
+
 }
