@@ -350,7 +350,7 @@ public class ImpDatos implements IDatos {
 				
 				while (rs.next()) {
 					int cod_categoria=rs.getInt("categoria_id");
-					System.out.println("Peliculas de la categoria"+cod_categoria);
+				    //System.out.println("Peliculas de la categoria"+cod_categoria);
 					listadoPeliculasCategoria(cod_categoria);
 				}
 				
