@@ -219,29 +219,23 @@ public class movieflix {
 
 	}
 
-	public void adminSocios() {
+public void adminSocios() {
 		
 		int seleccion = 0;
 		boolean correcto = false;
-
 		do {
-
 			try {
-
 				seleccion = LecturaDeDatos.leerInteger();
 				correcto = true;
 			} catch (InputMismatchException e) {
-
 				correcto = false;
 			}
-
-			if (seleccion < 1 || seleccion > 3) {
+			if (seleccion < 1 || seleccion > 4) {
 				correcto = false;
-				logger.info("Introduce un numero correcto");
+				System.out.println("Introduce un numero correcto");
 			}
 		} while (!correcto);
 		switch (seleccion) {
-
 		case 1:
 			
 			
@@ -272,9 +266,45 @@ public class movieflix {
 					e.printStackTrace();
 				}
 			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
+			break;
 			
+		case 2 : 
+			try {
+				servicios.modificarUsuario();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
 			
 			break;
+			
+		case 3 :
+		int id =	LecturaDeDatos.leerInteger("Introduce el ID del usuario a eliminar");
+			try {
+				servicios.eliminarUsuario(id);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				Menu.menuAdministrador();
+				this.menuAdmin2();
+				
+		case 4 : 
+			try {
+				servicios.listadoUsuarios();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Menu.menuAdministrador();
+			this.menuAdmin2();
+			
+			break;		
+			
 	}
 	}
 
