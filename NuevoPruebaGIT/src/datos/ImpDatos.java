@@ -249,7 +249,6 @@ public class ImpDatos implements IDatos {
 	/**
 	 *  Metodo de modificar la informacion del usuario de nuestro base de datos 
 	 *  
-	 * 
 	 */
 	public void modificarUsuario() {
 		Statement statement = null;
@@ -284,7 +283,10 @@ public class ImpDatos implements IDatos {
 	
 	}
 
-	
+	/**
+	 *  Metodo de modificar la informacion del usuario de nuestro base de datos 
+	 * 
+	 */
 	public void listarPeliculasMasVistas() {
 		Statement statement = null;
 		ResultSet rs = null;
@@ -306,7 +308,10 @@ public class ImpDatos implements IDatos {
 		}
 
 	}
-	
+	/**
+	 *  Metodo que mustra las peliculas que se pueden ver por el socio/no socio
+	 *  @param id_socio - id del socio 
+	 */
 	public void listarPeliculasPuedeVer(int id_socio) {
 		Statement statement = null;
 		ResultSet rs = null;
