@@ -3,7 +3,7 @@ package datos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.sql.PreparedStatement;
 import modelos.Peliculas;
 import modelos.Socios;
 import utilidades.ConexionDB;
@@ -15,42 +15,12 @@ import utilidades.LecturaDeDatos;
  */
 public class ImpDatos implements IDatos {
 	/**
-	 * @author Fernando Garcia
-	 * @param El Objeto socio nos proporcionara el nombre , fecha y ciudad para
-	 *           insertarlo en la base de datos
+	 *
+	 * Metodo para añadir una pelicula a nuestro base de datos.
+	 *  @param pelicula es un objecto de tipo Peliculas donde viene incoporado el nombre, el año y la categoria.
+	 * 
 	 */
-
-	public void addSocio(Socios socio) {
-
-		ConexionDB conexion = new ConexionDB();
-		String consulta = String.format(
-				"INSERT INTO socio (nombre,fecha_nacimiento,ciudad )\r\n" + "VALUES ('%s', '%s', '%s')",
-				socio.getNombre(), socio.getFecha().toString(), socio.getCiudad());
-		try {
-			Statement statement = conexion.getConnection().createStatement();
-			statement.executeUpdate(consulta);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			conexion.close();
-		}
-
-	}
-
-	@Override
 	public void addPeliculas(Peliculas pelicula) throws Exception {
-		/**
-		 *
-		 * @author Gsancho
-		 * 
-		 *         <p>
-		 *         Recibe un objeto de tipo Peliculas y lo introduce en la base de
-		 *         datos. Fecha 11/02/2020
-		 *         </p>
-		 * 
-		 * 
-		 */
-
 		String nombre = pelicula.getNombre();
 		int anio = pelicula.getYear();
 		String sinopsis = pelicula.getSinopsis();
@@ -75,7 +45,11 @@ public class ImpDatos implements IDatos {
 		}
 	}
 
-	@Override
+	/**
+	 *
+	 * Metodo para mostrar las peliculas existentes de nuestro base de datos.
+	 * 
+	 */
 	public void listarPeliculas() throws Exception {
 
 		ConexionDB c = null;
@@ -105,21 +79,12 @@ public class ImpDatos implements IDatos {
 		}
 	}
 
-	
-	
-	
+	/**
+	 *
+	 * Metodo para mostrar las peliculas existentes por categoria de nuestro base de datos.
+	 * @param numCategoria indica la categoria que quieres seleccionar y es de caracter INT
+	 */
 	public void listadoPeliculasCategoria(int numCategoria) {
-		/**
-		 *
-		 * @author Gsancho
-		 * 
-		 *         <p>
-		 *         Recibe una categoria como int y muestra todas las peliculas
-		 *         mediante una consulta
-		 *          Fecha 11/02/2020
-		 *         </p>
-		 * 
-		 */
 		
 		ConexionDB c = null;
 
@@ -148,8 +113,59 @@ public class ImpDatos implements IDatos {
 			c.close();
 		}
 	}
+	/**
+	 * Metodo para mostrar las peliculas mas valoradas de la base de datos
+	 * 
+	 * 
+	 */
+	public void listaPeliculasMasValoradas() {
+		ConexionDB con=null;
+		
+		try {
+			con=new ConexionDB();
+			Statement stmt=con.getConnection().createStatement();
+			String query="SELECT peliculas.id_peliculas, peliculas.nombre,\r\n" + 
+					"sum(visualizaciones.valoracion) as \"Puntuacion\" FROM peliculas JOIN\r\n" + 
+					"visualizaciones WHERE  peliculas.id_peliculas=visualizaciones.id_pelicula\r\n" + 
+					"Group by visualizaciones.id_pelicula order by puntuacion DESC limit 5;";
+			ResultSet rs=stmt.executeQuery(query);
+			
+			System.out.println("Las cinco peliculas mas valoradas: \n");
+			while(rs.next()) {
+				System.out.format("%-20s", rs.getString(2));
+				System.out.format("%-12s \n","  Puntuacion: "+rs.getInt(3));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			con.close();
+		}
+	}
 	
+	/**
+	 * Metodo para añadir un socio a nuestro base de datos.
+	 * @param socio es un objecto de tipo Socios donde viene incorporado el nombre, fecha de nacimiento y ciudad.
+	 *     
+	 */
+	public void addSocio(Socios socio) {
+		ConexionDB conexion = new ConexionDB();
+		String consulta = String.format(
+				"INSERT INTO socio (nombre,fecha_nacimiento,ciudad )\r\n" + "VALUES ('%s', '%s', '%s')",
+				socio.getNombre(), socio.getFecha().toString(), socio.getCiudad());
+		try {
+			Statement statement = conexion.getConnection().createStatement();
+			statement.executeUpdate(consulta);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conexion.close();
+		}
 
+	}
+	/**
+	 * Metodo para mostrar los usuarios de la base de datos. Muestra el nombre, fecha de nacimiento y ciudad.
+	 * 
+	 */
 	public void listadoUsuarios() {
 		ConexionDB conexion = new ConexionDB();
 		String consulta = "select * from Socio";
@@ -170,9 +186,67 @@ public class ImpDatos implements IDatos {
 		}finally {
 			conexion.close();
 		}
-		
-	}
+	}		
+	/**
+	 * 
+	 * Metodo para encontrar un usuario por id
+	 * 
+	 * @param id, este parametro es el identificador del usuario y es de caracter INT
+	 * @return Devulve un objecto de tipo socios.
+	 */
+
+	public Socios findById(int id) {
+		ConexionDB con=null;
+		try{
+			con=new ConexionDB();
+			Statement stmt=con.getConnection().createStatement();
+			String query="SELECT *FROM movieflix.socio WHERE id_socio="+id;
+			ResultSet rs=stmt.executeQuery(query);
+			if(!rs.next()){
+				return null;
+			}
+			return (new Socios(rs.getString("nombre"),rs.getDate("fecha_nacimiento").toLocalDate(),
+					rs.getString("ciudad")));
+			
+		}catch(SQLException e){
+
+			e.printStackTrace();
+		}finally{
 	
+			con.close();
+		}
+		return null;
+	}
+	/**
+	 *  Metodo de eliminar Usuario de nuestro base de datos
+	 * @param id este parametro es el identificador del usuario para eliminar y es de caracter INT
+	 * 
+	 */
+	
+	public void eliminarUsuario(int id){
+		ConexionDB con=null;
+		Socios socio=findById(id);
+		if(socio==null){
+			//logger.info("Error id inexistente");
+		}
+		try{
+			con=new ConexionDB();
+			Statement stmt=con.getConnection().createStatement();
+			String query="DELETE FROM movieflix.socio WHERE id_socio="+id;
+			if(stmt.executeUpdate(query)!=1){
+			    //logger.info("Error en la eliminacion");
+			}
+		}catch(SQLException e){
+				
+				e.printStackTrace();
+		}finally{
+				con.close();
+		}
+	}
+	/**
+	 *  Metodo de modificar la informacion del usuario de nuestro base de datos 
+	 * 
+	 */
 	public void modificarUsuario() {
 		Statement statement = null;
 		ResultSet rs = null;
@@ -201,11 +275,6 @@ public class ImpDatos implements IDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		
-		
+	
 	}
-		
-}
-
-
+}		

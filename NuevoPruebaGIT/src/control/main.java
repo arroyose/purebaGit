@@ -1,11 +1,14 @@
 package control;
 //import gui.Menu;
-
+import datos.ImpDatos;
 public class main {
 
 	public static void main(String[] args) {
-		new movieflix().mostrarMovieflix();
+		//new movieflix().mostrarMovieflix();
 
+		ImpDatos prueba=new ImpDatos();
+		prueba.listaPeliculasMasValoradas();
+		System.out.println("He terminado");
 	}
 
 }
