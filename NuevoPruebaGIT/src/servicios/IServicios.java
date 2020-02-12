@@ -22,5 +22,6 @@ public interface IServicios {
         public void modificarUsuario() throws Exception;
         public void eliminarUsuario(int id) throws Exception;
         public void listaPeliculasMasValoradas() throws Exception;
+        public void listaPeliculasNoPuedeVer(int id) throws Exception;
 
 }
