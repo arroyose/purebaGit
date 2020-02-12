@@ -1,4 +1,11 @@
 package modelos;
+/**
+ * *
+ * @author Eduardo Arroyo 
+ * 
+ * Enum para las categorias a las que puede pertenecer una pelicula
+ *
+ */
 
 public enum CategoriaPeliculas {
 	policiaca(1),
@@ -9,11 +16,18 @@ public enum CategoriaPeliculas {
 	thriller(6);
 	
 	private final int cod;
-	
+	/**
+	 * Constructor del ENUM 
+	 * @param Tiene como parametro el int del codigo de la categoria
+	 * */
 	private CategoriaPeliculas(int cod)
 	{
 		this.cod=cod;
 	}
+	/**
+	 * Obtener el cod de un ENM categoria  
+	 * @return Develve un INT con el codigo de la categoria
+	 * */
 	public int getCod()
 	{
 		return cod;

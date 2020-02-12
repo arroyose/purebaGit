@@ -18,63 +18,102 @@ public class Socios {
 	private LocalDate fecha=LocalDate.of(1900, 01, 01);
 	private String ciudad;
 	
-	
+	/**
+	 * Constructor sin parametros para la calse socios
+	 * 
+	 * */
 	public Socios() {
 		
 		
 	}
-	
+	/**
+	 * Constructor con todos los parametros para la calse Socios
+	 * @param nombre  El parametro nombre, define el nombre de un Socio y sera de tipo String
+	 * @param fecha  El parametro fecha, define la fecha de nacimiento de un usuario y sera de tipo LocalDate
+	 * @param ciudad El parametro  ciudad, define el nombre de ciudad en la que reside un socio y sera de tipo String
+	 * */
 	public Socios(String nombre, LocalDate fecha, String ciudad) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.ciudad = ciudad;
 	}
-
-
-
-
+	
+	/**
+	 * Constructor con parametros para la calse Socios
+	 * @param nombre  El parametro nombre, define el nombre de un Socio y sera de tipo String
+	 * @param ciudad El parametro  ciudad, define el nombre de ciudad en la que reside un socio y sera de tipo String
+	 * */
 	public Socios(String nombre, String ciudad) {
 		super();
 		this.nombre = nombre;
 		this.ciudad = ciudad;
 	}
-
-
+	/**
+	 * Constructor con parametros para la calse Socios
+	 * @param nombre  El parametro nombre, define el nombre de un Socio y sera de tipo String
+	 * */
 	public Socios(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
-
+	/**
+	 * getNombre Metodo que nos dara el nombre de un socio
+	 * @return Nombre de un socio 
+	 * */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * setNombre modifica el nombbre de un socio
+	 * @param nombre Nombre del socio tipo String
+	 * */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * getFecha obtiene la fecha de nacimiento de un socio
+	 * @retur fecha Fecha de nacimiento en formato LocalDate  del socio
+	 * */
 	public LocalDate getFecha() {
 		return fecha;
 	}
 
+	/**
+	 * setNombre modifica la fecha de nacimiento de un socio
+	 * @param fecha Fecha de nacimeinto del socio tipo LocalDate
+	 * */
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-
+	/**
+	 * getCiudad obtiene la ciudad en la que reside un usuario
+	 * @return ciudad Nos dara la ciudad en la que reside un usuario tipo String
+	 * */
 	public String getCiudad() {
 		return ciudad;
 	}
 
+	/**
+	 * setCiudad modifica la ciudad en la que reside un usuario
+	 * @param ciudad  Ciudad en la que reside un usuario tipo String
+	 * */
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-
+	/**
+	 * toString Metodo sobre esrito para la impresion de un Socio 
+	 *  
+	 * */
 	@Override
 	public String toString() {
 		return "Socios [nombre=" + nombre + ", fecha=" + fecha + ", ciudad=" + ciudad + "]";
 	}
-
+	/**
+	 * hasCode Metodo sobre esrito hasCode 
+	 *  
+	 * */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,7 +123,10 @@ public class Socios {
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
-
+	/**
+	 * equals Metodo sobreesrito para comparacion de objetos de la clase peliculas
+	 *  
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
