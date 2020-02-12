@@ -332,9 +332,8 @@ public class movieflix {
 
 		case 3:
 
-<<<<<<< HEAD
 			logger.info("Servicio en construccion, disculpen las molestias");
-=======
+
 			int id_socio =LecturaDeDatos.leerInteger("Introduce tu ID de socio");
 			try {
 				servicios.listarPeliculasPuedeVer(id_socio);
@@ -342,7 +341,6 @@ public class movieflix {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
->>>>>>> 15e5e08d352916ed6362c04295302c487853ee4a
 			Menu.menuUsuario();
 			this.menuSocios2();
 			break;
@@ -354,8 +352,7 @@ public class movieflix {
 			break;
 			
 		case 5:
-<<<<<<< HEAD
-=======
+
 			try {
 				servicios.listaPeliculasMasValoradas();
 			} catch (Exception e) {
@@ -376,7 +373,6 @@ public class movieflix {
 			this.menuSocios2();
 		
 		case 7:
->>>>>>> 15e5e08d352916ed6362c04295302c487853ee4a
 			
 			this.mostrarMovieflix();
 		}
